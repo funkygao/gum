@@ -1,4 +1,6 @@
+<!-- add bookmark dialog-->
 <div class="modal fade" id="addBookmarkDialog" role="dialog">
+  <form action="/v1/bookmarks" method="POST">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,21 +8,38 @@
         <h4 class="modal-title">系统信息</h4>
       </div>
       <div class="modal-body">
-        <p>Feel free to contact us for any issues you might have with our products.</p>
+        <p>请认真填写</p>
         <div class="row">
-          <div class="col-xs-6">
-            <label>Name</label>
-            <input type="text" class="form-control" placeholder="Name">
-          </div>
-          <div class="col-xs-6">
-            <label>Email</label>
-            <input type="text" class="form-control" placeholder="Email">
+           <div class="col-xs-12">
+            <label>URL</label>
+            <input type="text" class="form-control" placeholder="http://" name="uri" />
           </div>
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <label>Message</label>
-            <textarea class="form-control" rows="3">Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac</textarea>
+            <label>标题</label>
+            <input type="text" class="form-control" placeholder="title" name="title" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label>描述信息</label>
+            <textarea type="text" class="form-control" rows="3" name="description"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label>标签</label>
+            <textarea type="text" class="form-control" rows="2" name="tags"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <label>是否共享</label>
+            <label class="toggle">
+              <input type="checkbox" checked name="public">
+              <span class="handle"></span>
+            </label>
           </div>
         </div>
       </div>
@@ -30,8 +49,10 @@
       </div>
     </div>
   </div>
+</form>
 </div>
 
+<!-- navigation bar-->
 <div class="row">
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
