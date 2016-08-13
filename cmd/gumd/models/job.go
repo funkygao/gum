@@ -10,11 +10,11 @@ type Job struct {
 }
 
 func (j *Job) Path() string {
-	return fmt.Sprintf("assets/img/%d.png", j.BookmarkId)
+	return fmt.Sprintf("static/assets/img/%d.png", j.BookmarkId)
 }
 
 var (
-	jobCh = make(chan Job, 10)
+	jobCh = make(chan Job, 100)
 )
 
 func EmitJob(j Job) {
