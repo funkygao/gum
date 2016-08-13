@@ -87,6 +87,8 @@ func (c *BookmarkController) GetOne() {
 // @Failure 403
 // @router / [get]
 func (c *BookmarkController) GetAll() {
+	c.TplName = "bookmark/list.tpl"
+
 	var fields []string
 	var sortby []string
 	var order []string
@@ -130,11 +132,10 @@ func (c *BookmarkController) GetAll() {
 
 	l, err := models.GetAllBookmark(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		c.Data["err"] = err.Error()
 	} else {
-		c.Data["json"] = l
+		c.Data["bookmarks"] = l
 	}
-	c.ServeJSON()
 }
 
 // @Title Update
