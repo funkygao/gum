@@ -15,14 +15,6 @@ type FeedController struct {
 	beego.Controller
 }
 
-func (c *FeedController) URLMapping() {
-	c.Mapping("Post", c.Post)
-	c.Mapping("GetOne", c.GetOne)
-	c.Mapping("GetAll", c.GetAll)
-	c.Mapping("Put", c.Put)
-	c.Mapping("Delete", c.Delete)
-}
-
 // @Title Post
 // @Description create Feed
 // @Param	body		body 	models.Feed	true		"body for Feed content"
