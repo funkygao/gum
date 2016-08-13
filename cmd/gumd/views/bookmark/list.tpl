@@ -12,10 +12,8 @@
 {{range $i, $b := .bookmarks}}
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <img class="img-rounded" src="http://bootflat.github.io/img/thumbnail-3.jpg" >
+      <a href="{{$b.Uri}}"><img class="img-rounded" src="http://bootflat.github.io/img/thumbnail-3.jpg" ></a>
       <div class="caption text-center">
-        <h3>aa</h3>
-        <p>mm</p>
         <h3>{{$b.Title}}</h3>
         <p>{{$b.Description}}</p>
         <p>
@@ -24,6 +22,8 @@
           <span>{{$b.CommentCnt}}</span>
         </p>
         <p><a href="#" class="btn btn-warning" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><span class="tag badge badge-primary">Tag</span>&nbsp;<div class="blank"></div></p>
+        <p><span class="badge badge-primary">Normal</span>&nbsp;<div class="blank"></div></p>
       </div>
     </div>
   </div>
