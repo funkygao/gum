@@ -71,6 +71,7 @@
               <li class="dropdown-header">TODO</li>
               <li><a href="#">gist</a></li>
               <li><a href="#">photo</a></li>
+              <li><a href="#">poll</a></li>
               <li class="divider"></li>
               <li class="active"><a href="#">demo</a></li>
             </ul>

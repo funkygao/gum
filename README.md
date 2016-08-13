@@ -15,3 +15,9 @@ Connect software with people
 - browsing metrics
 - pin
 - grid/list view switch
+
+### Dependencies
+
+#### PhantomJS
+
+http://phantomjs.org/

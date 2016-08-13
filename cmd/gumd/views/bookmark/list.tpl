@@ -12,7 +12,7 @@
 {{range $i, $b := .bookmarks}}
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <a href="{{$b.Uri}}"><img class="img-rounded" src="/static/assets/img/5.png" ></a>
+      <a href="{{$b.Uri}}" target="_blank"><img class="img-rounded" src="/static/assets/img/5.png" ></a>
       <div class="caption text-center">
         <h3>{{$b.Title}}</h3>
         <p>{{$b.Description}}</p>
