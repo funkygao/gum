@@ -6,6 +6,7 @@ import (
 	"github.com/funkygao/gum/cmd/gumd/models"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego"
 )
@@ -22,15 +23,38 @@ type BookmarkController struct {
 // @Failure 403 body is empty
 // @router / [post]
 func (c *BookmarkController) Post() {
+	now := time.Now()
+
 	var v models.Bookmark
-	json.Unmarshal(c.Ctx.Input.RequestBody, &v)
-	if _, err := models.AddBookmark(&v); err == nil {
-		c.Ctx.Output.SetStatus(201)
-		c.Data["json"] = v
+	v.Uri = c.GetString("uri")
+	v.Title = c.GetString("title")
+	v.Description = c.GetString("description")
+	v.Private = c.GetString("public") != "on"
+	v.Ctime = now
+	v.Mtime = now
+	v.User = "demo" // TODO
+	if id, err := models.AddBookmark(&v); err == nil {
+		for _, t := range strings.Split(c.GetString("tags"), " ") {
+			if t == " " || t == "" {
+				continue
+			}
+
+			var tag models.Tag
+			tag.BookmarkId = id
+			tag.Tag = t
+			tag.Ctime = now
+			beego.Debug(tag)
+			if _, err := models.AddTag(&tag); err != nil {
+				beego.Error(err)
+			}
+		}
+
+		c.Redirect("/", 302)
 	} else {
 		c.Data["json"] = err.Error()
+		c.ServeJSON()
+
 	}
-	c.ServeJSON()
 }
 
 // @Title Get

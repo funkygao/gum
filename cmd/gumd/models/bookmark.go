@@ -12,9 +12,9 @@ import (
 type Bookmark struct {
 	Id          int64  `orm:"auto"`
 	User        string `orm:"size(128)"`
-	Uri         string `orm:"size(255)"`
-	Title       string `orm:"type(longtext)"`
-	Description string `orm:"type(longtext)"`
+	Uri         string `orm:"size(255)" form:"uri"`
+	Title       string `orm:"type(longtext)" form:"title"`
+	Description string `orm:"type(longtext)" form:"description"`
 	Private     bool
 	CommentCnt  int
 	HitCnt      int

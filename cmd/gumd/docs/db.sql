@@ -16,8 +16,10 @@ CREATE TABLE IF NOT EXISTS `bookmark` (
 );
 
 CREATE TABLE IF NOT EXISTS `tag` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `bookmark_id` bigint(20) NOT NULL,
   `tag` varchar(255) NOT NULL,
-  KEY `bookmarkIdIdx` (`bookmark_id`),
+  `ctime` datetime NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `tagIdx` (`tag`)
 );

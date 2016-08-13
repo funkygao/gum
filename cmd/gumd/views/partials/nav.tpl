@@ -1,6 +1,5 @@
 <!-- add bookmark dialog-->
-<div class="modal fade" id="addBookmarkDialog" role="dialog">
-  <form action="/v1/bookmarks" method="POST">
+<div class="modal fade" id="addBookmarkDialog" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,6 +7,7 @@
         <h4 class="modal-title">系统信息</h4>
       </div>
       <div class="modal-body">
+        <form action="/v1/bookmarks" class="form-horizontal" id="addBookmarkForm" role="form">
         <p>请认真填写</p>
         <div class="row">
            <div class="col-xs-12">
@@ -30,7 +30,7 @@
         <div class="row">
           <div class="col-xs-12">
             <label>标签</label>
-            <textarea type="text" class="form-control" rows="2" name="tags"></textarea>
+            <textarea type="text" class="form-control" rows="2" data-role="tagsinput" name="tags"></textarea>
           </div>
         </div>
         <div class="row">
@@ -42,14 +42,14 @@
             </label>
           </div>
         </div>
+      </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-success">添加</button>
+        <button type="submit" id="addBookmarkBtn" class="btn btn-success">添加</button>
       </div>
     </div>
   </div>
-</form>
 </div>
 
 <!-- navigation bar-->
@@ -87,3 +87,5 @@
     </div><!-- /.container-fluid -->
   </nav>
 </div>
+
+

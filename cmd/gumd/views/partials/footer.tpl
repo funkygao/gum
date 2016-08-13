@@ -6,4 +6,20 @@
 <script src="https://bootflat.github.io/bootflat/js/icheck.min.js"></script>
 <script src="https://bootflat.github.io/bootflat/js/jquery.fs.selecter.min.js"></script>
 <script src="https://bootflat.github.io/bootflat/js/jquery.fs.stepper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#addBookmarkBtn').click(function(e){
+      e.preventDefault();
+      //alert($('#addBookmarkForm').serialize());
+      //$('#addBookmarkForm').submit();
+      $.post('/v1/bookmarks', 
+         $('#addBookmarkForm').serialize(), 
+         function(data, status, xhr) {
+           //console.log(data, status, xhr);
+         });
+    });
+    //$('#addBookmarkDialog').modal('hide');
+
+});
+</script>
