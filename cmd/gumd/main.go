@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/funkygao/gum/cmd/gumd/routers"
+	"github.com/funkygao/gum/cmd/gumd/scheduler"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -13,5 +14,7 @@ func init() {
 }
 
 func main() {
+	go scheduler.RunForever()
+
 	beego.Run()
 }
