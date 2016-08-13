@@ -5,11 +5,12 @@ CREATE TABLE IF NOT EXISTS `bookmark` (
   `uri` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `private` bool DEFAULT false,
-  `pin` bool DEFAULT false,
-  `comment_cnt` int DEFAULT 0,
-  `hit_cnt` int DEFAULT 0,
-  `ctime` datetime DEFAULT NULL,
+  `private` bool NOT NULL DEFAULT false,
+  `pin` bool NOT NULL DEFAULT false,
+  `comment_cnt` int NOT NULL DEFAULT 0,
+  `hit_cnt` int NOT NULL DEFAULT 0,
+  `ctime` datetime NOT NULL,
+  `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `userIdx` (`user`)
 );
