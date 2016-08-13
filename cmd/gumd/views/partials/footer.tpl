@@ -22,4 +22,20 @@ $(document).ready(function() {
     //$('#addBookmarkDialog').modal('hide');
 
 });
+
+$(document).keydown(function(evt){
+    if (evt.keyCode==78) {
+        // 'n'
+        evt.preventDefault();
+        $('#addBookmarkDialog').modal('show');
+    } else if (evt.keyCode==83) {
+        // 's'
+        evt.preventDefault();
+        location.href = '/v1/bookmarks?public=1';
+    } else if (evt.keyCode==191) {
+        // '/'
+        evt.preventDefault();
+        $('#search').focus();
+    }
+});
 </script>

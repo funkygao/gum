@@ -13,11 +13,11 @@ Connect software with people
 - social 'like' button
 - comment
 - browsing metrics
+- full keyboard operation, conflunce compatible
 - pin
 - grid/list view switch
 
 ### Dependencies
 
-#### PhantomJS
-
-http://phantomjs.org/
+- http://phantomjs.org/
+- http://bootflat.github.io/index.html

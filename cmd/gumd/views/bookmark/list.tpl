@@ -9,20 +9,23 @@
 {{template "partials/nav.tpl" .}}
 
 <div class="row">
-{{range $i, $b := .bookmarks}}
+{{range .bookmarks}}
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <a href="{{$b.Uri}}" target="_blank"><img class="img-rounded" src="/static/assets/img/5.png" ></a>
+      <a href="{{.Uri}}" target="_blank"><img class="img-rounded" src="/static/assets/img/9_thumb.png" ></a>
       <div class="caption text-center">
-        <h3>{{$b.Title}}</h3>
-        <p>{{$b.Description}}</p>
+        <h3>{{.Title}}</h3>
+        <p>{{.Description}}</p>             
+        <ul class="nav nav-pills nav-justified">
+          <li><span>{{.User}}</span></li>
+          <li><span>最近访问 </span><span class="badgex">{{.Mtime}}</span></li>
+          <li><span>访问次数 </span><span class="badge badge-default">{{.HitCnt}}</span></li>
+        </ul>
+        <p><a href="#" class="btn btn-warning" role="button">Button</a> <a href="#" class="btn btn-default" role="button">评论 <span class="badge">{{.CommentCnt}}</span></a></p>
         <p>
-          <span>{{$b.Ctime}}</span>
-          <span>{{$b.HitCnt}}</span>
-          <span>{{$b.CommentCnt}}</span>
+          <span class="tag badge badge-primary">Tag</span>&nbsp;
+          <span class="tag badge badge-primary">Tag</span>
         </p>
-        <p><a href="#" class="btn btn-warning" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        <p><span class="tag badge badge-primary">Tag</span>&nbsp;<div class="blank"></div></p>
         <p><span class="badge badge-primary">Normal</span>&nbsp;<div class="blank"></div></p>
       </div>
     </div>

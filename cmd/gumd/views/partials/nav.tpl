@@ -81,7 +81,7 @@
         <form class="navbar-form navbar-right" role="search" method="GET" action="/v1/search">
           <div class="form-search search-only">
             <i class="search-icon glyphicon glyphicon-search"></i>
-            <input type="text" name="q" class="form-control search-query">
+            <input type="text" name="q" id="search" class="form-control search-query">
           </div>
         </form>
       </div><!-- /.navbar-collapse -->
