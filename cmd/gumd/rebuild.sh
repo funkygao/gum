@@ -13,3 +13,4 @@ bee generate controller bookmark
 bee generate controller comment
 bee generate controller tag
 bee generate controller feed
+bee generate controller search

@@ -6,3 +6,4 @@
 <script src="https://bootflat.github.io/bootflat/js/icheck.min.js"></script>
 <script src="https://bootflat.github.io/bootflat/js/jquery.fs.selecter.min.js"></script>
 <script src="https://bootflat.github.io/bootflat/js/jquery.fs.stepper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.9/js/bootstrap-dialog.min.js"></script>

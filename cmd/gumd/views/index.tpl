@@ -56,54 +56,6 @@
       </div>
 
 
-            <div class="row">
-              <div class="col-md-6">
-                <textarea class="form-control" rows="3"></textarea>
-              </div>
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="input-group">
-                      <span class="input-group-addon">$</span>
-                      <input type="text" class="form-control">
-                      <span class="input-group-addon">.00</span>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="input-group">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-danger" tabindex="-1">Action</button>
-                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
-                        </ul>
-                      </div>
-                      <input type="text" class="form-control">
-                      <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary" tabindex="-1">Action</button>
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" tabindex="-1">
-                          <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
 
 {{template "partials/footer.tpl" .}}
 </body>

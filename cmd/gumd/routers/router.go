@@ -12,6 +12,7 @@ func init() {
 		beego.NSNamespace("/bookmarks", beego.NSInclude(&controllers.BookmarkController{})),
 		beego.NSNamespace("/comments", beego.NSInclude(&controllers.CommentController{})),
 		beego.NSNamespace("/tags", beego.NSInclude(&controllers.TagController{})),
+		beego.NSNamespace("/search", beego.NSInclude(&controllers.SearchController{})),
 	)
 	beego.AddNamespace(ns)
 }
