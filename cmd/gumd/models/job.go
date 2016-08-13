@@ -9,8 +9,12 @@ type Job struct {
 	Uri        string
 }
 
-func (j *Job) Path() string {
+func (j *Job) SnapshotPath() string {
 	return fmt.Sprintf("static/assets/img/%d.png", j.BookmarkId)
+}
+
+func (j *Job) ThumbnailPath() string {
+	return fmt.Sprintf("static/assets/img/%d_thumb.png", j.BookmarkId)
 }
 
 var (
