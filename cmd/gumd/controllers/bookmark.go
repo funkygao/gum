@@ -49,6 +49,11 @@ func (c *BookmarkController) Post() {
 			}
 		}
 
+		models.EmitJob(models.Job{
+			BookmarkId: id,
+			Uri:        v.Uri,
+		})
+
 		c.Redirect("/", 302)
 	} else {
 		c.Data["json"] = err.Error()

@@ -1,8 +1,16 @@
 package models
 
+import (
+	"fmt"
+)
+
 type Job struct {
 	BookmarkId int64
 	Uri        string
+}
+
+func (j *Job) Path() string {
+	return fmt.Sprintf("assets/img/%d.png", j.BookmarkId)
 }
 
 var (
