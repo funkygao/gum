@@ -9,7 +9,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#addBookmarkBtn').click(function(e){
+    $('#addBookmarkBtn').click(function(e) {
       e.preventDefault();
       //alert($('#addBookmarkForm').serialize());
       //$('#addBookmarkForm').submit();
@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 });
 
-$(document).keydown(function(evt){
+$(document).keydown(function(evt) {
     if (evt.keyCode==78) {
         // 'n'
         evt.preventDefault();
@@ -36,6 +36,9 @@ $(document).keydown(function(evt){
         // '/'
         evt.preventDefault();
         $('#search').focus();
+    } else if (evt.keyCode==16||evt.keyCode==72) {
+        // '?', 'h' TODO
+        evt.preventDefault();        
     }
 });
 </script>
