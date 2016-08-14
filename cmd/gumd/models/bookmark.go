@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/funkygao/golib/gofmt"
 )
 
 type Bookmark struct {
@@ -25,6 +26,14 @@ type Bookmark struct {
 	Pin         bool
 	Ctime       time.Time `orm:"type(datetime)"`
 	Mtime       time.Time `orm:"type(datetime)"`
+}
+
+func (b Bookmark) SinceCtime() string {
+	return gofmt.PrettySince(b.Ctime)
+}
+
+func (b Bookmark) SinceMtime() string {
+	return gofmt.PrettySince(b.Mtime)
 }
 
 func (b Bookmark) Thumbnail() string {

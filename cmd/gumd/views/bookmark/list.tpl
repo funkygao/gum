@@ -37,9 +37,10 @@
         <h3>{{.Title}}</h3>
         <p>{{.Description}}</p>
         <ul class="nav nav-pills nav-justified">
-          <li><span>{{.User}}</span></li>
-          <li><span>最近访问 </span><span class="badgex">{{.Mtime}}</span></li>
-          <li><span>访问次数 </span><span class="badge badge-default">{{.HitCnt}}</span></li>
+          <li><span><i class="glyphicon glyphicon-user"></i> {{.User}}</span></li>
+          <li><span>访问 </span><span class="badge badge-default">{{.HitCnt}}</span></li>
+          <li><span>最近 </span><span class="badgex">{{.SinceMtime}}</span></li>
+          <li><span>发布 </span><span class="badgex">{{.SinceCtime}}</span></li>
         </ul>
         <p>
         {{range .Tags}}

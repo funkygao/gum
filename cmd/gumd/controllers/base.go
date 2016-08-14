@@ -11,7 +11,6 @@ type BaseController struct {
 func (c *BaseController) Prepare() {
 	c.Controller.Prepare()
 
-	beego.Debug("ha")
 	c.Data["ver"] = beego.AppConfig.String("ver")
 }
 

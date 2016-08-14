@@ -23,6 +23,8 @@
     <div id="content">
         {{.err}}
     </div>
-    
+    <div id="footer">
+        <p>{{.ver}}</p>
+    </div>
 </body>
 </html>
