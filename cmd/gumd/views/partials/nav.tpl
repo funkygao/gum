@@ -55,7 +55,7 @@
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">        
-        <a class="navbar-brand" href="/">ConnectEverything</a>
+        <a class="navbar-brand" href="/">LinkEverything</a>
       </div>
       
       <div class="collapse navbar-collapse">        
@@ -63,7 +63,24 @@
           <li><a href="/v1/tags"><i class="glyphicon glyphicon-tags"></i> Tags</a></li>
           <li><a href="/v1/feeds"><i class="glyphicon glyphicon-play"></i> Feeds</a></li>
           <li><a href="/v1/bookmarks?public=1"><i class="glyphicon glyphicon-eye-open"></i> Explore</a></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="dropdown-header">Sort</li>
+              <li><a href="/v1/bookmarks?sortby=id&order=desc">Latest first</a></li>
+              <li><a href="/v1/bookmarks?sortby=id&order=asc">Oldest first</a></li>
+              <li><a href="/v1/bookmarks?sortby=like_cnt&order=desc">Liked most first</a></li>
+              <li><a href="/v1/bookmarks?sortby=hit_cnt&order=desc">Hits most first</a></li>
+              <li><a href="/v1/bookmarks?sortby=comment_cnt&order=desc">Comments most first</a></li>
+              <li><a href="/v1/bookmarks?sortby=pin_cnt&order=desc">Pinned most first</a></li>
+              <li><a href="/v1/bookmarks?sortby=mtime&order=desc">Latest hit first</a></li>
+              <li class="divider"></li>
+              <li class="active"><a href="#">demo</a></li>
+            </ul>
+          </li>
         </ul>
+
 
         <span>&nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-success navbar-btn"><i class="glyphicon glyphicon-pencil"></i> 发布</button></span>
 
