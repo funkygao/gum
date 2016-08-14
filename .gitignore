@@ -23,6 +23,8 @@ _testmain.go
 *.test
 *.prof
 
+.DS_Store
+
 cmd/gumd/routers/commentsRouter_github_com_funkygao_gum_cmd_gumd_controllers.go
 cmd/gumd/gumd
 cmd/gumd/lastupdate.tmp

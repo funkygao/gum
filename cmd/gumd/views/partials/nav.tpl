@@ -59,11 +59,11 @@
       </div>
       
       <div class="collapse navbar-collapse">
-        <button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-success navbar-btn">发 布</button>
+        <button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-success navbar-btn"><i class="glyphicon glyphicon-pencil"></i> 发布</button>
         <ul class="nav navbar-nav">
-          <li><a href="/v1/tags">Tags</a></li>
-          <li><a href="/v1/feeds">Feeds</a></li>
-          <li class="active"><a href="/v1/bookmarks?public=1">Explore</a></li>
+          <li><a href="/v1/tags"><i class="glyphicon glyphicon-tags"></i> Tags</a></li>
+          <li><a href="/v1/feeds"><i class="glyphicon glyphicon-play"></i> Feeds</a></li>
+          <li class="active"><a href="/v1/bookmarks?public=1"><i class="glyphicon glyphicon-eye-open"></i> Explore</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">

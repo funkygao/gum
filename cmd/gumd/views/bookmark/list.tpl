@@ -15,11 +15,11 @@
       <a href="{{.Uri}}" target="_blank"><img class="img-rounded" src="/static/assets/img/9_thumb.png" ></a>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-success custom-button-width .navbar-right">Like <span class="badge badge-default">{{.LikeCnt}}</span></button>
-            <button type="button" class="btn btn-success custom-button-width .navbar-right">Pin <span class="badge badge-default">{{.PinCnt}}</span></button>
-            <a href="#" class="btn btn-default" role="button">评论 <span class="badge">{{.CommentCnt}}</span></a>
-            <button type="button" class="btn btn-default custom-button-width .navbar-right">Page</button>
+          <div class="col-md-12 text-left">
+            <button type="button" class="btn btn-success custom-button-width .navbar-right"><i class="glyphicon glyphicon-thumbs-up"></i> <span class="badge badge-default">{{.LikeCnt}}</span></button>
+            <button type="button" class="btn btn-success custom-button-width .navbar-right"><i class="glyphicon glyphicon-pushpin"></i> <span class="badge badge-default">{{.PinCnt}}</span></button>
+            <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-comment"></i> <span class="badge">{{.CommentCnt}}</span></a>
+            <button type="button" class="btn btn-default custom-button-width .navbar-right"><i class="glyphicon glyphicon-home"></i></button>
           </div>
         </div>
 
