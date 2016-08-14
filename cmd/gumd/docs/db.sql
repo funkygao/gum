@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS `bookmark` (
   `description` text NOT NULL,
   `private` bool NOT NULL DEFAULT false,
   `pin` bool NOT NULL DEFAULT false,
+  `pin_cnt` int NOT NULL DEFAULT 0,
+  `like_cnt` int NOT NULL DEFAULT 0,
   `comment_cnt` int NOT NULL DEFAULT 0,
   `hit_cnt` int NOT NULL DEFAULT 0,
   `ctime` datetime NOT NULL,
@@ -35,6 +37,14 @@ CREATE TABLE IF NOT EXISTS `comment` (
 CREATE TABLE IF NOT EXISTS `feed` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user` varchar(128) NOT NULL,
+  `bookmark_id` bigint(20) NOT NULL,
+  `body` text NOT NULL,
+  `ctime` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `changelog` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `bookmark_id` bigint(20) NOT NULL,
   `body` text NOT NULL,
   `ctime` datetime NOT NULL,

@@ -8,6 +8,7 @@ bee generate model bookmark -fields="id:auto,user:string,uri:string:255,title:te
 bee generate model tag -fields="bookmark_id:int64,tag:string:128,ctime:datetime"
 bee generate model comment -fields="bookmark_id:int64,body:text,ctime:datetime"
 bee generate model feed -fields="id:int64,body:text,ctime:datetime"
+bee generate model changelog -fields="id:int64,bookmark_id:int64,body:text,ctime:datetime"
 
 bee generate controller bookmark
 bee generate controller comment

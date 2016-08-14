@@ -9,88 +9,42 @@ import (
 	"time"
 )
 
-type Bookmark struct {
-	Id          int64  `orm:"auto"`
-	User        string `orm:"size(128)"`
-	Uri         string `orm:"size(255)"`
-	Title       string `orm:"type(longtext)"`
-	Description string `orm:"type(longtext)"`
-	Private     bool
-	PinCnt      int
-	LikeCnt     int
-	CommentCnt  int
-	HitCnt      int
-	Pin         bool
-	Ctime       time.Time `orm:"type(datetime)"`
-	Mtime       time.Time `orm:"type(datetime)"`
-}
-
-func (b *Bookmark) Thumbnail() string {
-	return fmt.Sprintf("/static/assets/img/%d_thumb.png", b.Id)
+type Changelog struct {
+	Id         int64
+	BookmarkId int64
+	Body       string    `orm:"type(longtext)"`
+	Ctime      time.Time `orm:"type(datetime)"`
 }
 
 func init() {
-	orm.RegisterModel(new(Bookmark))
+	orm.RegisterModel(new(Changelog))
 }
 
-// AddBookmark insert a new Bookmark into database and returns
+// AddChangelog insert a new Changelog into database and returns
 // last inserted Id on success.
-func AddBookmark(m *Bookmark, tags []string) (id int64, err error) {
+func AddChangelog(m *Changelog) (id int64, err error) {
 	o := orm.NewOrm()
-	o.Begin()
 	id, err = o.Insert(m)
-	if err != nil {
-		o.Rollback()
-		return
-	}
-
-	var feed Feed
-	feed.BookmarkId = id
-	feed.Body = m.Title
-	feed.Ctime = m.Ctime
-	feed.User = m.User
-	if _, err = o.Insert(&feed); err != nil {
-		o.Rollback()
-		return
-	}
-
-	// add tags
-	for _, t := range tags {
-		if strings.TrimSpace(t) == "" {
-			continue
-		}
-
-		var tag Tag
-		tag.BookmarkId = id
-		tag.Tag = t
-		tag.Ctime = m.Ctime
-		if _, err = o.Insert(&tag); err != nil {
-			o.Rollback()
-			return
-		}
-	}
-
-	err = o.Commit()
 	return
 }
 
-// GetBookmarkById retrieves Bookmark by Id. Returns error if
+// GetChangelogById retrieves Changelog by Id. Returns error if
 // Id doesn't exist
-func GetBookmarkById(id int64) (v *Bookmark, err error) {
+func GetChangelogById(id int64) (v *Changelog, err error) {
 	o := orm.NewOrm()
-	v = &Bookmark{Id: id}
+	v = &Changelog{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllBookmark retrieves all Bookmark matches certain condition. Returns empty list if
+// GetAllChangelog retrieves all Changelog matches certain condition. Returns empty list if
 // no records exist
-func GetAllBookmark(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllChangelog(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Bookmark))
+	qs := o.QueryTable(new(Changelog))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -136,7 +90,7 @@ func GetAllBookmark(query map[string]string, fields []string, sortby []string, o
 		}
 	}
 
-	var l []Bookmark
+	var l []Changelog
 	qs = qs.OrderBy(sortFields...)
 	if _, err := qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -159,11 +113,11 @@ func GetAllBookmark(query map[string]string, fields []string, sortby []string, o
 	return nil, err
 }
 
-// UpdateBookmark updates Bookmark by Id and returns error if
+// UpdateChangelog updates Changelog by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateBookmarkById(m *Bookmark) (err error) {
+func UpdateChangelogById(m *Changelog) (err error) {
 	o := orm.NewOrm()
-	v := Bookmark{Id: m.Id}
+	v := Changelog{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -174,15 +128,15 @@ func UpdateBookmarkById(m *Bookmark) (err error) {
 	return
 }
 
-// DeleteBookmark deletes Bookmark by Id and returns error if
+// DeleteChangelog deletes Changelog by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteBookmark(id int64) (err error) {
+func DeleteChangelog(id int64) (err error) {
 	o := orm.NewOrm()
-	v := Bookmark{Id: id}
+	v := Changelog{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&Bookmark{Id: id}); err == nil {
+		if num, err = o.Delete(&Changelog{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

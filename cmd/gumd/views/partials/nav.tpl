@@ -44,7 +44,7 @@
       </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" id="addBookmarkBtn" class="btn btn-success">添 加</button>
+        <button type="submit" id="addBookmarkBtn" class="btn btn-success">发布</button>
       </div>
     </div>
   </div>
@@ -59,10 +59,11 @@
       </div>
       
       <div class="collapse navbar-collapse">
-        <button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-success navbar-btn">添加</button>
+        <button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-success navbar-btn">发 布</button>
         <ul class="nav navbar-nav">
-          <li><a href="/v1/tags">标签</a></li>
-          <li class="active"><a href="/v1/bookmarks?public=1">探索发现</a></li>
+          <li><a href="/v1/tags">Tags</a></li>
+          <li><a href="/v1/feeds">Feeds</a></li>
+          <li class="active"><a href="/v1/bookmarks?public=1">Explore</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
