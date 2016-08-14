@@ -23,3 +23,19 @@ CREATE TABLE IF NOT EXISTS `tag` (
   PRIMARY KEY (`id`),
   KEY `tagIdx` (`tag`)
 );
+
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `bookmark_id` bigint(20) NOT NULL,
+  `body` text NOT NULL,
+  `ctime` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `feed` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `bookmark_id` bigint(20) NOT NULL,
+  `body` text NOT NULL,
+  `ctime` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+);

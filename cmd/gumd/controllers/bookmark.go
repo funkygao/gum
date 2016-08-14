@@ -33,22 +33,7 @@ func (c *BookmarkController) Post() {
 	v.Ctime = now
 	v.Mtime = now
 	v.User = "demo" // TODO
-	if id, err := models.AddBookmark(&v); err == nil {
-		for _, t := range strings.Split(c.GetString("tags"), " ") {
-			if t == " " || t == "" {
-				continue
-			}
-
-			var tag models.Tag
-			tag.BookmarkId = id
-			tag.Tag = t
-			tag.Ctime = now
-			beego.Debug(tag)
-			if _, err := models.AddTag(&tag); err != nil {
-				beego.Error(err)
-			}
-		}
-
+	if id, err := models.AddBookmark(&v, strings.Split(c.GetString("tags"), " ")); err == nil {
 		models.EmitJob(models.Job{
 			BookmarkId: id,
 			Uri:        v.Uri,
@@ -139,6 +124,9 @@ func (c *BookmarkController) GetAll() {
 	if err != nil {
 		c.Data["err"] = err.Error()
 	} else {
+		for _, b := range l {
+			beego.Debug(b)
+		}
 		c.Data["bookmarks"] = l
 	}
 }

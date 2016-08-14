@@ -33,9 +33,41 @@ func init() {
 
 // AddBookmark insert a new Bookmark into database and returns
 // last inserted Id on success.
-func AddBookmark(m *Bookmark) (id int64, err error) {
+func AddBookmark(m *Bookmark, tags []string) (id int64, err error) {
 	o := orm.NewOrm()
+	o.Begin()
 	id, err = o.Insert(m)
+	if err != nil {
+		o.Rollback()
+		return
+	}
+
+	var feed Feed
+	feed.BookmarkId = id
+	feed.Body = "" // TODO
+	feed.Ctime = m.Ctime
+	if _, err = o.Insert(&feed); err != nil {
+		o.Rollback()
+		return
+	}
+
+	// add tags
+	for _, t := range tags {
+		if strings.TrimSpace(t) == "" {
+			continue
+		}
+
+		var tag Tag
+		tag.BookmarkId = id
+		tag.Tag = t
+		tag.Ctime = m.Ctime
+		if _, err = o.Insert(&tag); err != nil {
+			o.Rollback()
+			return
+		}
+	}
+
+	err = o.Commit()
 	return
 }
 

@@ -10,9 +10,10 @@ import (
 )
 
 type Feed struct {
-	Id    int64
-	Body  string    `orm:"type(longtext)"`
-	Ctime time.Time `orm:"type(datetime)"`
+	Id         int64
+	BookmarkId int64
+	Body       string    `orm:"type(longtext)"`
+	Ctime      time.Time `orm:"type(datetime)"`
 }
 
 func init() {
