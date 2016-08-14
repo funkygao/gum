@@ -58,24 +58,14 @@
         <a class="navbar-brand" href="/">ConnectEverything</a>
       </div>
       
-      <div class="collapse navbar-collapse">
-        <button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-success navbar-btn"><i class="glyphicon glyphicon-pencil"></i> 发布</button>
+      <div class="collapse navbar-collapse">        
         <ul class="nav navbar-nav">
           <li><a href="/v1/tags"><i class="glyphicon glyphicon-tags"></i> Tags</a></li>
           <li><a href="/v1/feeds"><i class="glyphicon glyphicon-play"></i> Feeds</a></li>
-          <li class="active"><a href="/v1/bookmarks?public=1"><i class="glyphicon glyphicon-eye-open"></i> Explore</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
-            <ul class="dropdown-menu" role="menu">
-              <li class="dropdown-header">TODO</li>
-              <li><a href="#">gist</a></li>
-              <li><a href="#">photo</a></li>
-              <li><a href="#">poll</a></li>
-              <li class="divider"></li>
-              <li class="active"><a href="#">demo</a></li>
-            </ul>
-          </li>
+          <li><a href="/v1/bookmarks?public=1"><i class="glyphicon glyphicon-eye-open"></i> Explore</a></li>
         </ul>
+
+        <span>&nbsp;&nbsp;<button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-success navbar-btn"><i class="glyphicon glyphicon-pencil"></i> 发布</button></span>
 
         <form class="navbar-form navbar-right" role="search" method="GET" action="/v1/search">
           <div class="form-search search-only">

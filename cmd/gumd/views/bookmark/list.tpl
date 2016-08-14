@@ -42,16 +42,23 @@
           <li><span>访问次数 </span><span class="badge badge-default">{{.HitCnt}}</span></li>
         </ul>
         <p>
-          <span class="tag badge badge-primary">Tag</span>&nbsp;
-          <span class="tag badge badge-primary">Tag</span>
+          <span class="tag badge badge-primary"><i class="glyphicon glyphicon-tag"></i> Tag</span>
+          <span class="tag badge badge-primary"><i class="glyphicon glyphicon-tag"></i> TagFooBar</span>          
         </p>
-        <p><span class="badge badge-primary">Normal</span>&nbsp;<div class="blank"></div></p>
       </div>
+
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <input type="text" class="form-control" placeholder="Add a comment...">
+        </div>
+      </div>      
+
     </div>
   </div>
 {{end}}
 </div>
 
 {{template "partials/footer.tpl" .}}
+{{template "partials/scripts.tpl" .}}
 </body>
 </html>
