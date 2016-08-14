@@ -40,6 +40,10 @@ func (b Bookmark) Thumbnail() string {
 	return fmt.Sprintf("/static/assets/img/%d_thumb.png", b.Id)
 }
 
+func (b Bookmark) Snapshot() string {
+	return fmt.Sprintf("/static/assets/img/%d.png", b.Id)
+}
+
 func (b Bookmark) Tags() []string {
 	query := map[string]string{
 		"BookmarkID": strconv.FormatInt(b.Id, 10),

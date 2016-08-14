@@ -3,6 +3,7 @@ package scheduler
 import (
 	"bufio"
 	"fmt"
+	"image"
 	"image/png"
 	"io/ioutil"
 	"os"
@@ -11,6 +12,7 @@ import (
 	"github.com/funkygao/golib/pipestream"
 	"github.com/funkygao/gum/cmd/gumd/models"
 	"github.com/nfnt/resize"
+	"github.com/oliamb/cutter"
 )
 
 func RunForever() {
@@ -34,7 +36,7 @@ func captureSnapshot(job models.Job) {
 
 		beego.Info(fmt.Sprintf("captured %d: %s", job.BookmarkId, job.SnapshotPath()))
 
-		createThumbnail(job)
+		cropSnapshot(job)
 	}()
 
 	jsTpl := `
@@ -68,8 +70,8 @@ page.open('%s', function() {
 	}
 }
 
-func createThumbnail(job models.Job) {
-	beego.Debug(fmt.Sprintf("thumbnailing %d: %s", job.BookmarkId, job.SnapshotPath()))
+func cropSnapshot(job models.Job) {
+	beego.Debug(fmt.Sprintf("cropping %d: %s", job.BookmarkId, job.SnapshotPath()))
 
 	file, err := os.Open(job.SnapshotPath())
 	if err != nil {
@@ -84,7 +86,18 @@ func createThumbnail(job models.Job) {
 		return
 	}
 
-	m := resize.Resize(320, 240, img, resize.Lanczos3)
+	m, err := cutter.Crop(img, cutter.Config{
+		Height:  500,                 // height in pixel or Y ratio(see Ratio Option below)
+		Width:   500,                 // width in pixel or X ratio
+		Mode:    cutter.TopLeft,      // Accepted Mode: TopLeft, Centered
+		Anchor:  image.Point{10, 10}, // Position of the top left point
+		Options: 0,                   // Accepted Option: Ratio
+	})
+	if err != nil {
+		beego.Error(fmt.Sprintf("%+v: %s", job, err))
+		return
+	}
+
 	out, err := os.Create(job.ThumbnailPath())
 	if err != nil {
 		beego.Error(fmt.Sprintf("%+v: %s", job, err))
@@ -95,5 +108,35 @@ func createThumbnail(job models.Job) {
 	// write new image to file
 	png.Encode(out, m)
 
-	beego.Debug(fmt.Sprintf("thumbnailed %d: %s", job.BookmarkId, job.ThumbnailPath()))
+	beego.Debug(fmt.Sprintf("cropped %d: %s", job.BookmarkId, job.ThumbnailPath()))
+}
+
+func resizeSnapshot(job models.Job) {
+	beego.Debug(fmt.Sprintf("resizing %d: %s", job.BookmarkId, job.SnapshotPath()))
+
+	file, err := os.Open(job.SnapshotPath())
+	if err != nil {
+		beego.Error(fmt.Sprintf("%+v: %s", job, err))
+		return
+	}
+	defer file.Close()
+
+	img, err := png.Decode(file)
+	if err != nil {
+		beego.Error(fmt.Sprintf("%+v: %s", job, err))
+		return
+	}
+
+	m := resize.Resize(0, 240, img, resize.Lanczos3)
+	out, err := os.Create(job.ThumbnailPath())
+	if err != nil {
+		beego.Error(fmt.Sprintf("%+v: %s", job, err))
+		return
+	}
+	defer out.Close()
+
+	// write new image to file
+	png.Encode(out, m)
+
+	beego.Debug(fmt.Sprintf("resized %d: %s", job.BookmarkId, job.ThumbnailPath()))
 }

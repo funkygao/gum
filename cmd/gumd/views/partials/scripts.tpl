@@ -24,6 +24,9 @@ $(document).ready(function() {
 });
 
 $(document).keydown(function(evt) {
+    // how to disable the key events in a dialog? TODO
+    return;
+    
     if (evt.keyCode==78) {
         // 'n'
         evt.preventDefault();

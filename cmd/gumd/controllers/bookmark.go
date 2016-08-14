@@ -39,6 +39,29 @@ func (c *BookmarkController) Goto() {
 	c.Redirect(v.Uri, 302)
 }
 
+// @router /like/:id [get]
+func (c *BookmarkController) Like() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, err := strconv.ParseInt(idStr, 0, 64)
+	if err != nil {
+		beego.Error(err)
+		c.RenderError(err)
+		return
+	}
+
+	v, err := models.GetBookmarkById(id)
+	if err != nil {
+		beego.Error(err)
+		c.RenderError(err)
+		return
+	}
+	v.LikeCnt += 1 // TODO 1 user can like only once
+	models.UpdateBookmarkById(v)
+
+	c.Data["json"] = map[string]int{"like": v.LikeCnt}
+	c.ServeJSON()
+}
+
 // @Title Post
 // @Description create Bookmark
 // @Param	body		body 	models.Bookmark	true		"body for Bookmark content"
