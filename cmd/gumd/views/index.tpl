@@ -58,5 +58,6 @@
 
 
 {{template "partials/footer.tpl" .}}
+{{template "partials/scripts.tpl" .}}
 </body>
 </html>
