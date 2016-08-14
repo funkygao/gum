@@ -13,7 +13,7 @@
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
       <a href="{{.Uri}}" target="_blank"><img class="img-rounded" src="/static/assets/img/9_thumb.png" ></a>
-      <div class="caption text-center">
+      <div class="caption text-left">
         <h3>{{.Title}}</h3>
         <p>{{.Description}}</p>             
         <ul class="nav nav-pills nav-justified">

@@ -8,7 +8,6 @@
       </div>
       <div class="modal-body">
         <form action="/v1/bookmarks" class="form-horizontal" id="addBookmarkForm" role="form">
-        <p>请认真填写</p>
         <div class="row">
            <div class="col-xs-12">
             <label>URL</label>
@@ -45,8 +44,7 @@
       </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="submit" id="addBookmarkBtn" class="btn btn-success">添加</button>
+        <button type="submit" id="addBookmarkBtn" class="btn btn-success">添 加</button>
       </div>
     </div>
   </div>
