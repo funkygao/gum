@@ -25,7 +25,7 @@ type Bookmark struct {
 	Mtime       time.Time `orm:"type(datetime)"`
 }
 
-func (b *Bookmark) Thumbnail() string {
+func (b Bookmark) Thumbnail() string {
 	return fmt.Sprintf("/static/assets/img/%d_thumb.png", b.Id)
 }
 

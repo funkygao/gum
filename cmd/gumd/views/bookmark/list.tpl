@@ -12,7 +12,7 @@
 {{range .bookmarks}}
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <a href="{{.Uri}}" target="_blank"><img class="img-rounded" src="/static/assets/img/9_thumb.png" ></a>
+      <a href="{{.Uri}}" target="_blank"><img class="img-rounded" src="{{.Thumbnail}}" ></a>
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 text-left">
