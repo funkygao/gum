@@ -22,7 +22,7 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <label>描述信息</label>
+            <label>描述</label>
             <textarea type="text" class="form-control" rows="3" name="description"></textarea>
           </div>
         </div>

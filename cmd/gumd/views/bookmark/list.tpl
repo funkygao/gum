@@ -16,8 +16,8 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 text-left">
-            <button type="button" class="btn btn-success custom-button-width .navbar-right"><i class="glyphicon glyphicon-thumbs-up"></i> <span class="badge badge-default">{{.LikeCnt}}</span></button>
-            <button type="button" class="btn btn-success custom-button-width .navbar-right"><i class="glyphicon glyphicon-pushpin"></i> <span class="badge badge-default">{{.PinCnt}}</span></button>
+            <button type="button" class="btn btn-default custom-button-width .navbar-right"><i class="glyphicon glyphicon-thumbs-up"></i> <span class="badge badge-default">{{.LikeCnt}}</span></button>
+            <button type="button" class="btn btn-default custom-button-width .navbar-right"><i class="glyphicon glyphicon-pushpin"></i> <span class="badge badge-default">{{.PinCnt}}</span></button>
             <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-comment"></i> <span class="badge">{{.CommentCnt}}</span></a>
             <button type="button" class="btn btn-default custom-button-width .navbar-right"><i class="glyphicon glyphicon-home"></i></button>
           </div>
