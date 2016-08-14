@@ -52,16 +52,16 @@
 
 <!-- navigation bar-->
 <div class="row">
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">        
         <a class="navbar-brand" href="/">ConnectEverything</a>
       </div>
       
       <div class="collapse navbar-collapse">
-        <button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-warning navbar-btn">添加</button>
+        <button type="button" data-toggle="modal" data-target="#addBookmarkDialog" class="btn btn-success navbar-btn">添加</button>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/v1/tags">标签</a></li>
+          <li><a href="/v1/tags">标签</a></li>
           <li class="active"><a href="/v1/bookmarks?public=1">探索发现</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
