@@ -3,10 +3,12 @@ package models
 import (
 	"errors"
 	"fmt"
-	"github.com/astaxie/beego/orm"
 	"reflect"
+	"strconv"
 	"strings"
 	"time"
+
+	"github.com/astaxie/beego/orm"
 )
 
 type Bookmark struct {
@@ -27,6 +29,25 @@ type Bookmark struct {
 
 func (b Bookmark) Thumbnail() string {
 	return fmt.Sprintf("/static/assets/img/%d_thumb.png", b.Id)
+}
+
+func (b Bookmark) Tags() []string {
+	query := map[string]string{
+		"BookmarkID": strconv.FormatInt(b.Id, 10),
+	}
+	l, err := GetAllTag(query, []string{}, []string{"Tag"}, []string{"asc"}, 0, 0)
+	if err != nil {
+		return []string{}
+	}
+
+	r := make([]string, 0)
+	for _, item := range l {
+		if tag, ok := item.(Tag); ok {
+			// tag might be null, must type assert
+			r = append(r, tag.Tag)
+		}
+	}
+	return r
 }
 
 func init() {

@@ -42,8 +42,9 @@
           <li><span>访问次数 </span><span class="badge badge-default">{{.HitCnt}}</span></li>
         </ul>
         <p>
-          <span class="tag badge badge-primary"><i class="glyphicon glyphicon-tag"></i> Tag</span>
-          <span class="tag badge badge-primary"><i class="glyphicon glyphicon-tag"></i> TagFooBar</span>          
+        {{range .Tags}}
+          <a class="tag badge badge-primary" href="/v1/bookmarks?tag={{.}}"><i class="glyphicon glyphicon-tag"></i> {{.}}</a>
+        {{end}}
         </p>
       </div>
 

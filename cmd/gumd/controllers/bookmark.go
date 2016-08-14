@@ -124,9 +124,6 @@ func (c *BookmarkController) GetAll() {
 	if err != nil {
 		c.Data["err"] = err.Error()
 	} else {
-		for _, b := range l {
-			beego.Debug(b)
-		}
 		c.Data["bookmarks"] = l
 	}
 }
