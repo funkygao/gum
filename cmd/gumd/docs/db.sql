@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 
 CREATE TABLE IF NOT EXISTS `feed` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user` varchar(128) NOT NULL,
   `bookmark_id` bigint(20) NOT NULL,
   `body` text NOT NULL,
   `ctime` datetime NOT NULL,

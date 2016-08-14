@@ -44,8 +44,9 @@ func AddBookmark(m *Bookmark, tags []string) (id int64, err error) {
 
 	var feed Feed
 	feed.BookmarkId = id
-	feed.Body = "" // TODO
+	feed.Body = m.Title
 	feed.Ctime = m.Ctime
+	feed.User = m.User
 	if _, err = o.Insert(&feed); err != nil {
 		o.Rollback()
 		return

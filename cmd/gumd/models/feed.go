@@ -11,6 +11,7 @@ import (
 
 type Feed struct {
 	Id         int64
+	User       string
 	BookmarkId int64
 	Body       string    `orm:"type(longtext)"`
 	Ctime      time.Time `orm:"type(datetime)"`
