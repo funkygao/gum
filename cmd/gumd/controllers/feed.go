@@ -3,16 +3,15 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/funkygao/gum/cmd/gumd/models"
 	"strconv"
 	"strings"
 
-	"github.com/astaxie/beego"
+	"github.com/funkygao/gum/cmd/gumd/models"
 )
 
 // oprations for Feed
 type FeedController struct {
-	beego.Controller
+	BaseController
 }
 
 // @Title Post

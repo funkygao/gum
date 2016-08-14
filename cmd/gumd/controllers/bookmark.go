@@ -13,7 +13,30 @@ import (
 
 // oprations for Bookmark
 type BookmarkController struct {
-	beego.Controller
+	BaseController
+}
+
+// @router /go/:id [get]
+func (c *BookmarkController) Goto() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, err := strconv.ParseInt(idStr, 0, 64)
+	if err != nil {
+		beego.Error(err)
+		c.RenderError(err)
+		return
+	}
+
+	v, err := models.GetBookmarkById(id)
+	if err != nil {
+		beego.Error(err)
+		c.RenderError(err)
+		return
+	}
+	v.HitCnt += 1
+	v.Mtime = time.Now()
+	models.UpdateBookmarkById(v)
+
+	c.Redirect(v.Uri, 302)
 }
 
 // @Title Post
