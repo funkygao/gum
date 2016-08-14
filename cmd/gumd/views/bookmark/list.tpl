@@ -13,6 +13,16 @@
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
       <a href="{{.Uri}}" target="_blank"><img class="img-rounded" src="/static/assets/img/9_thumb.png" ></a>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 text-left">
+            <button type="button" class="btn btn-success custom-button-width .navbar-right">Pin</button>
+            <button type="button" class="btn btn-warning custom-button-width .navbar-right">Edit</button>
+            <button type="button" class="btn btn-danger custom-button-width .navbar-right">Delete</button>
+          </div>
+        </div>
+      </div>
+
       <div class="caption text-left">
         <h3>{{.Title}}</h3>
         <p>{{.Description}}</p>             
