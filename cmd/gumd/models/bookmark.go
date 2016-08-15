@@ -146,7 +146,7 @@ func GetBookmarksByTag(tag string) (ml []interface{}, err error) {
 	var bs []Bookmark
 	o := orm.NewOrm()
 	sql := fmt.Sprintf("SELECT id,user,uri,title,description,private,pin,pin_cnt,hit_cnt,like_cnt,comment_cnt,hit_cnt,ctime,mtime FROM bookmark WHERE id in (%s)",
-		joinInts(ids, ","))
+		joinInt64s(ids, ","))
 	if _, err = o.Raw(sql).QueryRows(&bs); err != nil {
 		return
 	}
