@@ -3,11 +3,13 @@ package models
 import (
 	"errors"
 	"fmt"
+	"os"
 	"reflect"
 	"strconv"
 	"strings"
 	"time"
 
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"github.com/funkygao/golib/gofmt"
 )
@@ -37,7 +39,12 @@ func (b Bookmark) SinceMtime() string {
 }
 
 func (b Bookmark) Thumbnail() string {
-	return fmt.Sprintf("/static/assets/img/%d_thumb.png", b.Id)
+	path := fmt.Sprintf("/static/assets/img/%d_thumb.png", b.Id)
+	if _, err := os.Stat(path); err != nil && os.IsNotExist(err) {
+		return beego.AppConfig.String("empty_thumb")
+	}
+
+	return path
 }
 
 func (b Bookmark) Snapshot() string {
