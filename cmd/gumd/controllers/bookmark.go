@@ -132,6 +132,16 @@ func (c *BookmarkController) GetAll() {
 	var limit int64 = 1000
 	var offset int64 = 0
 
+	if v := c.GetString("tag"); v != "" {
+		l, err := models.GetBookmarksByTag(v)
+		if err != nil {
+			c.Data["err"] = err.Error()
+		} else {
+			c.Data["bookmarks"] = l
+		}
+		return
+	}
+
 	// fields: col1,col2,entity.col3
 	if v := c.GetString("fields"); v != "" {
 		fields = strings.Split(v, ",")

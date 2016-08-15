@@ -131,6 +131,32 @@ func GetBookmarkById(id int64) (v *Bookmark, err error) {
 	return nil, err
 }
 
+func GetBookmarksByTag(tag string) (ml []interface{}, err error) {
+	query := map[string]string{
+		"Tag": tag,
+	}
+	l, err := GetAllTag(query, []string{}, []string{}, []string{}, 0, 0)
+	ids := make([]int64, 0)
+	for _, item := range l {
+		if tag, ok := item.(Tag); ok {
+			ids = append(ids, tag.BookmarkId)
+		}
+	}
+
+	var bs []Bookmark
+	o := orm.NewOrm()
+	sql := fmt.Sprintf("SELECT id,user,uri,title,description,private,pin,pin_cnt,hit_cnt,like_cnt,comment_cnt,hit_cnt,ctime,mtime FROM bookmark WHERE id in (%s)",
+		joinInts(ids, ","))
+	if _, err = o.Raw(sql).QueryRows(&bs); err != nil {
+		return
+	}
+
+	for _, b := range bs {
+		ml = append(ml, b)
+	}
+	return
+}
+
 // GetAllBookmark retrieves all Bookmark matches certain condition. Returns empty list if
 // no records exist
 func GetAllBookmark(query map[string]string, fields []string, sortby []string, order []string,
