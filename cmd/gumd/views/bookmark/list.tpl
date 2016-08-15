@@ -12,7 +12,7 @@
 {{range .bookmarks}}
   <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-      <a href="/v1/bookmarks/go/{{.Id}}" target="_blank"><img class="img-rounded" src="{{.Thumbnail}}" ></a>
+      <a href="/v1/bookmarks/go/{{.Id}}" target="_blank"><img class="img-rounded" src="{{.ThumbnailUrl}}" ></a>
       <div class="container-fluid">       
         <div class="row">
           <div class="col-md-12 text-right">
@@ -26,13 +26,12 @@
 
       <div class="caption text-left">
         <h3>{{.Title}}</h3>
-        <p>{{.Description}}</p>
+        <p><pre>{{.Description}}</pre></p>
         <ul class="nav nav-pills nav-justified">
           <li><span><i class="glyphicon glyphicon-user"></i> {{.User}}</span></li>
           <li><span>访问 </span><span class="badge badge-default">{{.HitCnt}}</span></li>
-          <li><span>最近 </span><span class="badgex">{{.SinceMtime}}</span></li>
-          <li><span>发布 </span><span class="badgex">{{.SinceCtime}}</span></li>
-        </ul>        
+          <li><span class="badgex">{{.SinceMtime}} / {{.SinceCtime}}</span></li>
+        </ul>
       </div>
 
       <div class="container-fluid">
@@ -55,7 +54,7 @@
           </div>
         </div>        
       </div>
-      
+
       <br/>
 
       <div class="row">

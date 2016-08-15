@@ -38,17 +38,22 @@ func (b Bookmark) SinceMtime() string {
 	return gofmt.PrettySince(b.Mtime)
 }
 
-func (b Bookmark) Thumbnail() string {
-	path := fmt.Sprintf("/static/assets/img/%d_thumb.png", b.Id)
+func (b Bookmark) ThumbnailUrl() string {
+	path := fmt.Sprintf("static/assets/img/%d_thumb.png", b.Id)
 	if _, err := os.Stat(path); err != nil && os.IsNotExist(err) {
 		return beego.AppConfig.String("empty_thumb")
 	}
 
-	return path
+	return "/" + path
 }
 
-func (b Bookmark) Snapshot() string {
-	return fmt.Sprintf("/static/assets/img/%d.png", b.Id)
+func (b Bookmark) SnapshotUrl() string {
+	path := fmt.Sprintf("static/assets/img/%d.png", b.Id)
+	if _, err := os.Stat(path); err != nil && os.IsNotExist(err) {
+		return beego.AppConfig.String("empty_thumb")
+	}
+
+	return "/" + path
 }
 
 func (b Bookmark) Tags() []string {
