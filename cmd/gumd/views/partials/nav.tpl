@@ -1,3 +1,5 @@
+<div class="container-fluid"> <!--close div tag placed inside footer.tpl-->
+
 <!-- add bookmark dialog-->
 <div class="modal fade" id="addBookmarkDialog" tabindex="-1" role="dialog">
   <div class="modal-dialog">
