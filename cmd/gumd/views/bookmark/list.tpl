@@ -68,9 +68,15 @@
 
   <div class="col-md-3">
     <div class="row">
-      <p>feeds</p>
+      <h3><i class="glyphicon glyphicon-play"></i> feeds</h3>
+      <ul class="list-group">
+      {{range .feeds}}
+      <li class="list-group-item">{{.User}}  {{.BookmarkId}}  {{.Body}}</li>
+      {{end}}
+      </ul>
     </div>
   </div>
+
 </div>
 
 {{template "partials/footer.tpl" .}}

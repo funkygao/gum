@@ -181,6 +181,8 @@ func (c *BookmarkController) GetAll() {
 		c.Data["err"] = err.Error()
 	} else {
 		c.Data["bookmarks"] = l
+
+		c.fetchFeeds()
 	}
 }
 

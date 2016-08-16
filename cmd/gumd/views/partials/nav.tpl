@@ -63,7 +63,6 @@
       <div class="collapse navbar-collapse">        
         <ul class="nav navbar-nav">
           <li><a href="/v1/tags"><i class="glyphicon glyphicon-tags"></i> Tags</a></li>
-          <li><a href="/v1/feeds"><i class="glyphicon glyphicon-play"></i> Feeds</a></li>
           <li><a href="/v1/bookmarks?public=1"><i class="glyphicon glyphicon-eye-open"></i> Explore</a></li>
 
           <li class="dropdown">
